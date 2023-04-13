@@ -1,5 +1,3 @@
-package config;
-
 /**
  * TestRail API binding for Java (API v2, available since TestRail 3.0)
  *
@@ -11,10 +9,10 @@ package config;
  * Copyright Gurock Software GmbH. See license.md for details.
  */
 
-public class APIException extends Exception
-{
-    public APIException(String message)
-    {
-        super(message);
-    }
+package config;
+
+class APIException extends Exception {
+  APIException(String message) {
+		super(message);
+	}
 }
