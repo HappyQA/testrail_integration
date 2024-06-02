@@ -1,9 +1,4 @@
-package config;
-
-import org.junit.jupiter.api.extension.ExtensionContext;
-import org.junit.jupiter.api.extension.TestWatcher;
-
-import java.util.Optional;
+package testRail;
 
 public class TestRailListener implements TestWatcher {
 
@@ -17,11 +12,6 @@ public class TestRailListener implements TestWatcher {
     }
 
     @Override
-    public void testAborted(ExtensionContext extensionContext, Throwable cause) {
-        sendTestResult(extensionContext, String.valueOf(TestResult.BLOCKED));
-    }
-
-    @Override
     public void testFailed(ExtensionContext extensionContext, Throwable cause) {
         sendTestResult(extensionContext, String.valueOf(TestResult.FAILED));
     }
@@ -31,7 +21,7 @@ public class TestRailListener implements TestWatcher {
         if (getRunId != null) {
             return getRunId;
         }
-        throw new Exception("Missing Run Id");
+        throw new Exception("TestRail run ID are not found");
     }
 
     private void sendTestResult(ExtensionContext extensionContext, String result) {
@@ -41,6 +31,6 @@ public class TestRailListener implements TestWatcher {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        TestRailHelper.setTestRailStatus(extensionContext, TestResult.valueOf(result), suiteId);
+        TestRailHelper.sendTestRailResults(extensionContext, TestResult.valueOf(result), suiteId);
     }
 }

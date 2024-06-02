@@ -9,10 +9,8 @@
  * Copyright Gurock Software GmbH. See license.md for details.
  */
 
-package config;
-
 class APIException extends Exception {
-  APIException(String message) {
+	APIException(String message) {
 		super(message);
 	}
 }

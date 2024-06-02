@@ -1,4 +1,4 @@
-package config;
+package testRail;
 
 public class TestRailCreds {
 

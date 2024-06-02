@@ -10,8 +10,6 @@
  * Copyright Gurock Software GmbH. See license.md for details.
  */
 
-package config;
-
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
@@ -20,7 +18,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Base64;
-
 
 class APIClient {
 	private String m_user;
@@ -84,7 +81,7 @@ class APIClient {
 	 * If 'get_attachment/:attachment_id', returns a String
 	 */
 	public Object sendGet(String uri, String data)
-		throws MalformedURLException, IOException, APIException
+			throws MalformedURLException, IOException, APIException
 	{
 		return this.sendRequest("GET", uri, data);
 	}
@@ -116,13 +113,13 @@ class APIClient {
 	 * is basically the same as java.util.Map.
 	 */
 	public Object sendPost(String uri, Object data)
-		throws MalformedURLException, IOException, APIException
+			throws MalformedURLException, IOException, APIException
 	{
 		return this.sendRequest("POST", uri, data);
 	}
 
 	private Object sendRequest(String method, String uri, Object data)
-		throws MalformedURLException, IOException, APIException
+			throws MalformedURLException, IOException, APIException
 	{
 		URL url = new URL(this.m_url + uri);
 		// Create the connection object and set the required HTTP method
@@ -181,7 +178,7 @@ class APIClient {
 				{
 					conn.addRequestProperty("Content-Type", "application/json");
 					byte[] block = JSONValue.toJSONString(data).
-						getBytes("UTF-8");
+							getBytes("UTF-8");
 
 					conn.setDoOutput(true);
 					OutputStream ostream = conn.getOutputStream();
@@ -207,8 +204,8 @@ class APIClient {
 			if (istream == null)
 			{
 				throw new APIException(
-					"TestRail API return HTTP " + status +
-					" (No additional error message received)"
+						"TestRail API return HTTP " + status +
+								" (No additional error message received)"
 				);
 			}
 		}
@@ -217,34 +214,34 @@ class APIClient {
 			istream = conn.getInputStream();
 		}
 
-        // If 'get_attachment' (not 'get_attachments') returned valid status code, save the file
-        if ((istream != null)
-	    && (uri.startsWith("get_attachment/")))
-    	{
-            FileOutputStream outputStream = new FileOutputStream((String)data);
+		// If 'get_attachment' (not 'get_attachments') returned valid status code, save the file
+		if ((istream != null)
+				&& (uri.startsWith("get_attachment/")))
+		{
+			FileOutputStream outputStream = new FileOutputStream((String)data);
 
-            int bytesRead = 0;
-            byte[] buffer = new byte[1024];
-            while ((bytesRead = istream.read(buffer)) > 0)
-            {
-                outputStream.write(buffer, 0, bytesRead);
-            }
+			int bytesRead = 0;
+			byte[] buffer = new byte[1024];
+			while ((bytesRead = istream.read(buffer)) > 0)
+			{
+				outputStream.write(buffer, 0, bytesRead);
+			}
 
-            outputStream.close();
-            istream.close();
-            return (String) data;
-        }
+			outputStream.close();
+			istream.close();
+			return (String) data;
+		}
 
-        // Not an attachment received
+		// Not an attachment received
 		// Read the response body, if any, and deserialize it from JSON.
 		String text = "";
 		if (istream != null)
 		{
 			BufferedReader reader = new BufferedReader(
-				new InputStreamReader(
-					istream,
-					"UTF-8"
-				)
+					new InputStreamReader(
+							istream,
+							"UTF-8"
+					)
 			);
 
 			String line;
@@ -283,8 +280,8 @@ class APIClient {
 			}
 
 			throw new APIException(
-				"TestRail API returned HTTP " + status +
-				"(" + error + ")"
+					"TestRail API returned HTTP " + status +
+							"(" + error + ")"
 			);
 		}
 

@@ -3,93 +3,67 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>testrail</groupId>
-    <artifactId>test</artifactId>
+    <groupId>TEST</groupId>
+    <artifactId>TEST</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <java.version>11</java.version>
-        <selenide.version>6.3.5</selenide.version>
-        <webdrivermanager.version>3.8.1</webdrivermanager.version>
-        <log4j-api.version>2.13.1</log4j-api.version>
-        <log4j-core.version>2.13.1</log4j-core.version>
+        <selenide.version>7.3.1</selenide.version>
+        <rest.assured-version>5.4.0</rest.assured-version>
+        <mongodb.driver>4.11.1</mongodb.driver>
+        <rest.assured.schema-validator>5.4.0</rest.assured.schema-validator>
+        <allure-selenide.version>2.24.0</allure-selenide.version>
+        <allure-rest.assured.version>2.24.0</allure-rest.assured.version>
+        <allure-java-commons.version>2.24.0</allure-java-commons.version>
+        <allure-junit.version>2.24.0</allure-junit.version>
+        <allure-maven.verson>2.12.0</allure-maven.verson>
         <junit.version>5.8.2</junit.version>
-        <allure-junit.version>2.13.8</allure-junit.version>
-        <allure-java-commons.version>2.13.5</allure-java-commons.version>
-        <allure-maven.verson>2.9</allure-maven.verson>
-        <allure-selenide.version>2.13.6</allure-selenide.version>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <aspectj.version>1.8.10</aspectj.version>
-        <owner-java8.version>1.0.6</owner-java8.version>
-        <json-simple.version>1.1.1</json-simple.version>
-        <rest.assured-version>5.0.0</rest.assured-version>
+        <junit.launcher-version>1.8.2</junit.launcher-version>
+        <log4j-api.version>2.21.1</log4j-api.version>
+        <log4j-core.version>2.21.1</log4j-core.version>
+        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>3.2.1</maven-surefire-plugin.version>
+        <json-simple.version>1.1</json-simple.version>
+        <owner.version>1.0.12</owner.version>
+        <aspectjweaver.version>1.9.9</aspectjweaver.version>
+        <lombok.version>1.18.30</lombok.version>
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide-grid</artifactId>
+            <version>${selenide.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>${rest.assured-version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
-        <dependency>
-            <groupId>com.googlecode.json-simple</groupId>
-            <artifactId>json-simple</artifactId>
-            <version>${json-simple.version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-core -->
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-core</artifactId>
-            <version>2.2</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.codeborne/selenide -->
-        <dependency>
-            <groupId>com.codeborne</groupId>
-            <artifactId>selenide</artifactId>
-            <version>${selenide.version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>${webdrivermanager.version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>${log4j-api.version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${log4j-core.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-sync</artifactId>
+            <version>${mongodb.driver}</version>
         </dependency>
 
-        <!-- Allure-->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>${rest.assured.schema-validator}</version>
+        </dependency>
+
         <dependency>
             <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-junit5</artifactId>
-            <version>${allure-junit.version}</version>
-            <scope>test</scope>
+            <artifactId>allure-selenide</artifactId>
+            <version>${allure-selenide.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-rest-assured</artifactId>
+            <version>${allure-rest.assured.version}</version>
         </dependency>
 
         <dependency>
@@ -101,89 +75,64 @@
 
         <dependency>
             <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-selenide</artifactId>
-            <version>${allure-selenide.version}</version>
+            <artifactId>allure-junit5</artifactId>
+            <version>${allure-junit.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 
-        <!--OWNER -->
         <dependency>
-            <groupId>org.aeonbits.owner</groupId>
-            <artifactId>owner-java8</artifactId>
-            <version>${owner-java8.version}</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
+            <scope>compile</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <version>${junit.launcher-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j-api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j-core.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>${json-simple.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aeonbits.owner</groupId>
+            <artifactId>owner</artifactId>
+            <version>${owner.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
-                <configuration>
-<!--                    <parallel>classes</parallel>-->
-<!--                    <perCoreThreadCount>false</perCoreThreadCount>-->
-<!--                    <threadCount>5</threadCount>-->
-                    <testFailureIgnore>false</testFailureIgnore>
-                    <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                    </argLine>
-                    <properties>
-<!--                        <groups>-->
-<!--                            create,-->
-<!--                            update,-->
-<!--                            delete,-->
-<!--                            other-->
-<!--                        </groups>-->
-                        <properties>
-                            <systemProperties>
-                                <name>allure.results.directory</name>
-                                <value>${project.build.directory}target/allure-results</value>
-                            </systemProperties>
-                        </properties>
-
-                        <property>
-                            <name>listener</name>
-                            <value>io.qameta.allure.junit5.AllureJunit5</value>
-                        </property>
-                    </properties>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-
-            <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>3.1.0</version>
-                <configuration>
-                    <filesets>
-                        <fileset>
-                            <directory>${basedir}</directory>
-                            <includes>
-                                <include>target/allure-results</include>
-                            </includes>
-                            <followSymlinks>false</followSymlinks>
-                        </fileset>
-                    </filesets>
-                </configuration>
-            </plugin>
-
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
@@ -198,6 +147,22 @@
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectjweaver.version}/aspectjweaver-${aspectjweaver.version}.jar"
+                    </argLine>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
